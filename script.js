@@ -1,5 +1,5 @@
-// index.html을 열어서 agoraStatesDiscussions 배열 요소를 확인하세요.
-
+//입력 시간 - 한국 시간으로 지정
+const newDate = new Date().toLocaleString('ko-KR');  
 
 // convertToDiscussion은 아고라 스테이츠 데이터를 DOM으로 바꿔줍니다.
 const convertToDiscussion = (...agoraStatesDiscussions) => {
@@ -32,7 +32,8 @@ const convertToDiscussion = (...agoraStatesDiscussions) => {
   //저자 & 작성자 
   const theAuthor = document.createElement('div');
   theAuthor.className = 'discussion__information';
-  theAuthor.textContent = agoraStatesDiscussions[0].author + " / " + agoraStatesDiscussions[0].createdAt;
+  createdAt = new Date(agoraStatesDiscussions[0].createdAt).toLocaleString('kr-KR');
+  theAuthor.textContent = agoraStatesDiscussions[0].author + " / " + createdAt;
   discussionContent.append(theAuthor);
   // createInfo.textContent = `${obj.author} / ${newDate(obj.createdAt).toLocalString()}`;
 
@@ -67,7 +68,7 @@ const form = document.querySelector('form.form');
 const title = document.querySelector('input#title');
 const author = document.querySelector('input#name');
 const ques = document.querySelector('textarea#story');
-const newDate = new Date(); /*진행 없이 막 적었음*/ 
+
 form.addEventListener('submit', (e) => {
    // 새로 고침 막는 법 
   e.preventDefault(); // 새로고침 방지 
